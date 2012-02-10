@@ -1,0 +1,3 @@
+Project Eueler Solutions
+
+These are my solutions to the project euler (projecteuler.net) problems I have attempted.  I've done most problems in Python, some in Matlab or Google Go, and one or two in C++.  There is a Python library, eulerlib.py, that has many useful functions for project eueler.  All the functions are tested and all the functions of one variable can plot performance metrics, try ./eulerlib.py -h for instructions.
