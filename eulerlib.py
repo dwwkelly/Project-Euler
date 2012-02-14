@@ -435,7 +435,7 @@ def totient(n):
     return coprimes
 
 
-@test_fun
+#@test_fun
 def multiplicativeOrder(a, n, maxloops=2000):
     '''
 
@@ -477,6 +477,25 @@ def howManyPrimes(a, b):
             break
 
     return nPrimes
+
+
+@test_fun
+def isPerfectSquare(n):
+    """
+    Returns True if n is a perfect square, false otherwise
+
+    >>> isPerfectSquare(6)
+    False
+    >>> isPerfectSquare(9)
+    True
+    >>> isPerfectSquare(16)
+    True
+    """
+    square_root = math.sqrt(n)
+    if int(square_root + 0.5) ** 2 == n:
+        return True
+    else:
+        return False
 
 
 if __name__ == '__main__':
