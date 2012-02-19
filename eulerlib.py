@@ -3,6 +3,7 @@ import sys
 from optparse import OptionParser
 
 __author__ = 'Devin Kelly <dwwkelly@gmail.com>'
+__copyright__ = 'Copyright 2012, Devin Kelly'
 
 functions = []
 MICROSECONDS_PER_SECOND = 1000000
@@ -496,6 +497,59 @@ def isPerfectSquare(n):
         return True
     else:
         return False
+
+
+@test_fun
+def num2List(n):
+    ''' 
+    Takes an int and returns an a list made up of the digits in that int
+
+    >>> num2List(23)
+    [2, 3]
+    >>> num2List(9999)
+    [9, 9, 9, 9]
+    >>> num2List(1000000)
+    [1, 0, 0, 0, 0, 0, 0]
+    '''
+    if n < 10:
+        return [n]
+
+    modVal = 10
+    returnValue = list()
+    m = n % modVal
+    while m is not n:
+        returnValue.append(m)
+        n = n - m
+        n = n / 10
+        #modVal = modVal ** 10
+        m = n % modVal
+    returnValue.append(m)
+
+    returnValue.reverse()
+
+    return returnValue
+
+
+@test_fun
+def list2Num(l):
+    """
+    Takes a list of ints and returns an int with the items in the list appended
+
+    >>> list2Num([1, 2, 3])
+    123
+    >>> list2Num([9, 9, 9, 9, 9])
+    99999
+    >>> list2Num([0, 0, 1, 2, 0])
+    120
+    """
+    l.reverse()
+    exponent = 0
+    returnValue = 0
+    for ii in l:
+        returnValue =+ returnValue + ii * 10 ** (exponent)
+        exponent =+ exponent + 1
+
+    return returnValue
 
 
 if __name__ == '__main__':
