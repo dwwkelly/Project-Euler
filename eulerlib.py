@@ -592,6 +592,31 @@ def rotateInt( n, rotations=1 ):
    return list2Num( l )
 
 
+@test_fun
+def isPalindrome( n ):
+    """
+    Return true is the given number is a palindrome, false otherwise
+
+
+    >>> isPalindrome( 10 )
+    False
+
+    >>> isPalindrome( 101 )
+    True
+
+    >>> isPalindrome(  1221 )
+    False
+
+    """
+    l = num2List( n )
+
+    for ii in range(len(l)):
+        if l[ii] != l[-ii - 1]:
+            return False
+
+    return True
+
+
 if __name__ == '__main__':
     usage = "usage: %prog [options] arg"
     parser = OptionParser(usage)
