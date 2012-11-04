@@ -28,4 +28,4 @@ for ii in p:
             aMax = ii
             bMax = kk
 
-print maxPrime, ', ', aMax, ', ', bMax, ', ', aMax  bMax
+print maxPrime, ', ', aMax, ', ', bMax, ', ', aMax, ', ',  bMax

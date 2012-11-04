@@ -3,10 +3,10 @@
 import string
 import numpy as np
 
-alphaDict = dict(zip(string.ascii_uppercase, range(1,27)))
+alphaDict = dict(zip(string.ascii_uppercase, range(1, 27)))
 
 if __name__ == '__main__':
-   
+
     f = open('files/names.txt')
 
     names = f.read()
@@ -19,7 +19,7 @@ if __name__ == '__main__':
     names.sort()
 
     nNames = len(names)
-    multipliers = range(1,nNames+1)
+    multipliers = range(1, nNames + 1)
 
     nameNumber = list()
     for name in names:

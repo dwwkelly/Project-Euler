@@ -30,4 +30,3 @@ if __name__ == '__main__':
                 pMax = p
         print 'Repeating length: ', kMax
         print 'd = ', pMax
-

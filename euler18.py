@@ -1,5 +1,4 @@
 #!/usr/bin/python
-import numpy as np
 
 txt = open('files/triangle67.txt')
 
@@ -17,12 +16,12 @@ lines.reverse()
 nlines = len(lines)
 
 topLine = lines[0]
-for ii in xrange(nlines-1):
-    bottomLine = lines[ii+1]
+for ii in xrange(nlines - 1):
+    bottomLine = lines[ii + 1]
 
     maxLine = list()
     for kk in xrange(len(bottomLine)):
-        m = max(topLine[kk], topLine[kk+1])
+        m = max(topLine[kk], topLine[kk + 1])
         maxLine.append(m)
 
     topLine = [sum(pair) for pair in zip(maxLine, bottomLine)]

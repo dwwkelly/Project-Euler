@@ -21,3 +21,5 @@ if __name__ == '__main__':
     answer.append(nums[0])
 
     print ''.join(map(str, answer))
+
+    eulerlib.factorial(6)

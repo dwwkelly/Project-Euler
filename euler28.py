@@ -2,7 +2,7 @@
 
 #
 #        43 44 45 46 47 48 49
-#        42 21 22 23 24 25 26 
+#        42 21 22 23 24 25 26
 #        41 20  7  8  9 10 27
 #        40 19  6  1  2 11 28
 #        39 18  5  4  3 12 29
@@ -15,25 +15,25 @@
 
 if __name__ == "__main__":
 
-    loopCount  = 0
-    last       = 1
+    loopCount = 0
+    last = 1
     upperLimit = 1001
-    current    = 1
-    nums       = []
+    current = 1
+    nums = []
 
     while loopCount < upperLimit:
-        current =  current + ( loopCount * 2 )
+        current = current + (loopCount * 2)
         nums.append(current)
         loopCount = loopCount + 1
-    
+
     current = 1
-    loopCount  = 0
+    loopCount = 0
 
-    while loopCount <=  500:
+    while loopCount <= 500:
         current = current + 4 * loopCount
         nums.append(current)
         current = current + 4 * loopCount
         nums.append(current)
         loopCount = loopCount + 1
 
-    print sum(nums) - 2 # 1 get counted three times so subtract two of them
+    print sum(nums) - 2  # 1 get counted three times so subtract two of them

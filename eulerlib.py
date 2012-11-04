@@ -1,6 +1,7 @@
 import math
 import sys
 from optparse import OptionParser
+from collections import deque
 
 __author__ = 'Devin Kelly <dwwkelly@gmail.com>'
 __copyright__ = 'Copyright 2012, Devin Kelly'
@@ -30,6 +31,26 @@ def nDigits(anInt):
         exponent = exponent + 1
 
     return int(exponent)
+
+
+@test_fun
+def nDigits2( n ):
+   """
+   returns the number of digits in an integer
+
+   >>> nDigits( 123 )
+   3
+
+   >>> nDigits( 1234567890 )
+   10
+   """
+   exp = 0
+   tmp = 0
+   while tmp is not n:
+      exp += 1
+      tmp = n % 10 ** exp
+
+   return exp
 
 
 @test_fun
@@ -452,7 +473,7 @@ def multiplicativeOrder(a, n, maxloops=2000):
     primes = sieveOfEratosthenes(a * n)
 
     for k in primes:
-        if (a ** k) % n  is 1:
+        if (a ** k) % n is 1:
             return k
     return None
 
@@ -501,7 +522,7 @@ def isPerfectSquare(n):
 
 @test_fun
 def num2List(n):
-    ''' 
+    '''
     Takes an int and returns an a list made up of the digits in that int
 
     >>> num2List(23)
@@ -546,24 +567,43 @@ def list2Num(l):
     exponent = 0
     returnValue = 0
     for ii in l:
-        returnValue =+ returnValue + ii * 10 ** (exponent)
-        exponent =+ exponent + 1
+        returnValue += ii * 10 ** ( exponent )
+        exponent += 1
 
     return returnValue
+
+
+@test_fun
+def rotateInt( n, rotations=1 ):
+   """
+   Rotates an integer by the given amount
+
+   >>> rotateInt( 123 )
+   312
+
+   >>> rotateInt( 123, 2 )
+   231
+
+   >>> rotateInt( 123456 )
+   612345
+   """
+   l = deque( num2List( n ) )
+   l.rotate( rotations )
+   return list2Num( l )
 
 
 if __name__ == '__main__':
     usage = "usage: %prog [options] arg"
     parser = OptionParser(usage)
     parser.add_option("-t", "--test",
-        action="store_true", dest="test", default=False,
-        help="Tests All Functions")
+                      action="store_true", dest="test", default=False,
+                      help="Tests All Functions")
     parser.add_option("-l", "--list",
-        action="store_true", dest="functionList", default=False,
-        help="Prints a list of functions")
+                      action="store_true", dest="functionList", default=False,
+                      help="Prints a list of functions")
     parser.add_option("-f", "--function",
-        dest="function", default='',
-        help="Get info on the given function")
+                      dest="function", default='',
+                      help="Get info on the given function")
 
     (options, args) = parser.parse_args()
 
@@ -585,8 +625,8 @@ if __name__ == '__main__':
         us = list()
         items = range(1, 1001, 10)
         for ii in items:
-            t = timeit.Timer(function + '(' + str(ii) + ')',\
-                    'from __main__ import ' + function)
+            t = timeit.Timer(function + '(' + str(ii) + ')',
+                             'from __main__ import ' + function)
             us.append(t.timeit(100) * 1000000)
 
         pyplot.plot(items, us)

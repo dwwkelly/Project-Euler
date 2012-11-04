@@ -9,7 +9,7 @@ for ii in xrange(2, 1000000):
     l = num2List(ii)
     for kk in l:
         cumulativeSum = cumulativeSum + kk ** 5
-    
+
     if cumulativeSum == ii:
         finalSum = finalSum + cumulativeSum
 
