@@ -650,6 +650,30 @@ def isTruncatable( n, l ):
     return True
 
 
+def isPandigital( n, length=9, index=1 ):
+    """
+    Tests to see if the given number n is pandigital.
+    Pandigital numbers contain 1 to 9
+    http://en.wikipedia.org/wiki/Pandigital_number
+
+    >>> isPandigital( 123456789 )
+    True
+
+    >>> isPandigital( 192384576 )
+    True
+
+    >>> isPandigital( 123 )
+    False
+    """
+    l = sorted( num2List( n ) )
+    r = range( index, length + 1 )
+
+    if l == r:
+        return True
+    else:
+        return False
+
+
 if __name__ == '__main__':
     usage = "usage: %prog [options] arg"
     parser = OptionParser(usage)
