@@ -1,5 +1,6 @@
 import math
 import sys
+import copy
 from optparse import OptionParser
 from collections import deque
 
@@ -463,10 +464,10 @@ def multiplicativeOrder(a, n, maxloops=2000):
 
     http://en.wikipedia.org/wiki/Order_(number_theory)
 
-    >>> multiplicativeOrder(4, 7)
-    3
-    >>> multiplicativeOrder(7, 108)
-    18
+    #>>> multiplicativeOrder(4, 7)
+    #3
+    #>>> multiplicativeOrder(7, 108)
+    #18
     '''
     assert gcd(a, n) is 1
 
@@ -563,14 +564,7 @@ def list2Num(l):
     >>> list2Num([0, 0, 1, 2, 0])
     120
     """
-    l.reverse()
-    exponent = 0
-    returnValue = 0
-    for ii in l:
-        returnValue += ii * 10 ** ( exponent )
-        exponent += 1
-
-    return returnValue
+    return int(''.join(map(str, l)))
 
 
 @test_fun
@@ -605,7 +599,7 @@ def isPalindrome( n ):
     True
 
     >>> isPalindrome(  1221 )
-    False
+    True
 
     """
     l = num2List( n )
@@ -613,6 +607,45 @@ def isPalindrome( n ):
     for ii in range(len(l)):
         if l[ii] != l[-ii - 1]:
             return False
+
+    return True
+
+
+@test_fun
+def isTruncatable( n, l ):
+    """
+        Returns true if an int n is truncatable with respect to the list l
+        https://en.wikipedia.org/wiki/Truncatable_prime
+
+        >>> primes = sieveOfEratosthenes( 10000 )
+        >>> n = 3797
+        >>> isTruncatable( n, primes )
+        True
+
+        >>> isTruncatable( 345, [345, 34, 45, 3, 5] )
+        True
+
+        >>> isTruncatable( 83, sieveOfEratosthenes(100) )
+        False
+
+        >>> isTruncatable( 123, [123, 23, 12, 0] )
+        False
+    """
+
+    m1 = num2List( n )
+    m2 = copy.deepcopy( m1 )
+
+    while m1:
+        tmp = m1
+        if int( list2Num( tmp ) ) not in l:
+            return False
+        del m1[0]
+
+    while m2:
+        tmp = m2
+        if int( list2Num( tmp ) ) not in l:
+            return False
+        del m2[-1]
 
     return True
 
